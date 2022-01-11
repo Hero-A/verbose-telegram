@@ -28,11 +28,27 @@ function modelLoaded() {
 
 function draw(){
     image(video, 0, 0, 500, 460);
+    fill("blue");
+    stroke("blue");
+    if(scoreLeftWrist > 0.2){
+    circle(leftWristX, leftWristY, 25);
+
+    InNumberleftWristY = Number(leftWristY);
+    remove_decimals = floor(InNumberleftWristY);
+    volume = remove_decimals/500;
+    document.getElementById("volume").innerHTML = "Volume = " + volume;
+    sound.setVolume(volume); 
 }
 
 function start(){
     sound1.play();
     sound2.play(); 
+}
+
+function play(){
+    sound.play();
+    sound.setVolume(1);
+    sound.rate(1);
 }
 
 function gotPoses(results){
@@ -48,4 +64,6 @@ function gotPoses(results){
         console.log("rightWristX = " + rightWristX + "rightWristY" + rightWristY);
 
     }
+}
+
 }
