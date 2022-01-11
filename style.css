@@ -1,0 +1,24 @@
+body{
+    background-size: cover;
+}
+
+.note{
+    color: black;
+    font-size: 18px;
+}
+
+.header{
+    font-size: 21;
+    width: 100%;
+    margin: 0px;
+}
+
+.kid{
+    width: 100;
+    font-size: 14;
+}
+
+canvas{
+    border: 5 solid goldenrod;
+
+}
