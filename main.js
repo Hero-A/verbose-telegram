@@ -38,6 +38,34 @@ function draw(){
     volume = remove_decimals/500;
     document.getElementById("volume").innerHTML = "Volume = " + volume;
     sound.setVolume(volume); 
+    }
+    fill("red");
+    stroke("yellow")
+    if (scoreRightWrist > 0.2) {
+        circle(rightWristX, rightWristY, 25);
+        if (rightWristY > 0 && rightWristY <= 100) {
+            document.getElementById("speed").innerHTML = "speed == 0.5x";
+            song.rate(0.5);
+         
+    }  
+        else if (rightWristY > 200 && rightWristY <= 300) {
+           document.getElementById("speed").innerHTML = "speed == 1.5x";
+           song.rate(1.5);
+     
+    }
+       else if (rightWristY > 300 && rightWristY <= 400) {
+           document.getElementById("speed").innerHTML = "speed == 2x";
+           song.rate(2);
+     
+    }  
+        if (rightWristY > 400 && rightWristY <= 500) {
+           document.getElementById("speed").innerHTML = "speed == 2.5x";
+           song.rate(2.5);
+     
+    }  
+
+}  
+    circle(rightWristX, rightWristY, 25)
 }
 
 function start(){
@@ -55,7 +83,9 @@ function gotPoses(results){
     if(results.length > 0){
         console.log(results);
         scoreLeftWrist = results[0].pose.keypoints[9].score;
-        console.log("scoreLeftWrist = " + scoreLeftWrist);
+        scoreRightWrist = results[0].pose.keypoints[10].score;
+        console.log("scoreLeftWrist = " + scoreLeftWrist + "scoreRightWrist" + scoreRightWrist);
+
         leftWristX = results[0].pose.leftWrist.x;
         leftWristY = results[0].pose.leftWrist.y;
         console.log("leftWristX = " + leftWristX + "leftWristY = " + leftWristY);
@@ -64,6 +94,6 @@ function gotPoses(results){
         console.log("rightWristX = " + rightWristX + "rightWristY" + rightWristY);
 
     }
-}
+
 
 }
